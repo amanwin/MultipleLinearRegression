@@ -16,7 +16,7 @@ The R-squared will always either increase or remain the same when you add more v
 
 Let’s now look at the formulation of multiple linear regression. Most of the concepts in multiple linear regression are quite similar to those in simple linear regression. The formulation for predicting the response variable now becomes:
 
-$Y = β_0 + β_1X_1 + β_2X_2 +...+β_pX_p$
+![title](mlr-formula.png)
 
 ### Interpretation of the cofficients:
 Change in the mean response, E(y), per unit increase in the variable when the other predictors are held constant.
@@ -73,7 +73,7 @@ Two basic ways of dealing with multicollinearity are:
     * VIF calculates how well one independent variable is explained by all the other independent variables combined, excluding the target variable
 
 The VIF is given by:
-## $VIF_i = \frac{1}{1 - R_i^2}$
+![title](vif-formula.png)
 where 'i' refers to the i-th variable which is being represented as a linear combination of rest of the independent variables. 
 
 The common heuristic we follow for the VIF values is:
