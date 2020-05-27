@@ -73,7 +73,9 @@ Two basic ways of dealing with multicollinearity are:
     * VIF calculates how well one independent variable is explained by all the other independent variables combined, excluding the target variable
 
 The VIF is given by:
+
 ![title](vif-formula.png)
+
 where 'i' refers to the i-th variable which is being represented as a linear combination of rest of the independent variables. 
 
 The common heuristic we follow for the VIF values is:
@@ -94,4 +96,38 @@ Some methods that can be used to deal with multicollinearity are:
 3. **Variable transformations**
 * Principal Component Analysis
 * Partial Least Square (out of scope)
+
+# Dealing with Categorical Variables
+
+So far, you have worked with numerical variables. But many times, you will have non-numeric variables in the datasets. These variables are also known as categorical variables. Obviously, these variables can't be used directly in the model since they are non-numeric.
+
+When you have a categorical variable with say 'n' levels, the idea of dummy variable creation is to build 'n-1' variables, indicating the levels. For a variable say, 'Relationship' with three levels namely, 'Single', 'In a relationship', and 'Married', you would create a dummy table like the following:
+
+![title](dummy1.png)
+
+But you can clearly see that there is no need of defining three different levels. If you drop a level, say 'Single', you would still be able to explain the three levels.
+
+Let's drop the dummy variable 'Single' from the columns and see what the table looks like:
+
+![title](dummy2.png)
+
+If both the dummy variables namely 'In a relationship' and 'Married' are equal to zero, that means that the person is single. If 'In a relationship' is one and 'Married' is zero, that means that the person is in a relationship and finally, if 'In a relationship' is zero and 'Married' is 1, that means that the person is married. N-1 dummy variables can be used to describe a categorical variable with N levels.
+
+# Feature Scaling
+Why do we need to scale features?
+1. Ease of interpretation.
+If variables have very different scales then cofficent do not signifies importance of them. One good way is if we can have all of them on one scale, then it is very easy to compare the cofficients of one with other. So interpretation becomes very easy if we scale features in multiple linear regression.
+
+2. Faster convergence for gradient descent methods.
+As in the backend gradient descent happens. If we have a lot of features in very different scales, then it takes lot of time for convergence. If we can get them to same ranges i.e. -1 to 1 or 0 to 1 which are close by then convergence happens much faster. So feature scaling is recommended.
+
+It is important to note that scaling just affects the coefficients and none of the other parameters like t-statistic, F-statistic, p-values, R-squared, etc.
+
+There are two major methods to scale the variables, i.e. **standardisation and MinMax scaling**.
+
+**Standardisation** basically brings all of the data into a standard normal distribution with mean zero and standard deviation one. **MinMax scaling**, on the other hand, brings all of the data in the range of 0 and 1. The formulae in the background used for each of these methods are as given below: 
+
+![title](scaling-formula.png)
+
+
 
